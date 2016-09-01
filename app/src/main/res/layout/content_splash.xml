@@ -11,17 +11,19 @@
     tools:showIn="@layout/activity_splash">
 
     <TextView
+        android:id="@+id/page_title"
+        style="?android:attr/textAppearanceLargeInverse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
         android:layout_centerHorizontal="true"
-        style="?android:attr/textAppearanceLargeInverse"/>
+        android:text="@string/app_name" />
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:contentDescription="@null"
         android:scaleType="fitEnd"
         android:src="@drawable/confused_logo" />
 
