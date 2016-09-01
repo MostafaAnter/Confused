@@ -30,7 +30,5 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
             }
         });
-
-        HelperUtil.setupWindowAnimations(this);
     }
 }
