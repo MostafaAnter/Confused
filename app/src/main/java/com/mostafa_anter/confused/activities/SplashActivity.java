@@ -48,7 +48,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void changeAppNameFont(){
-        Typeface confusedFont = Typeface.createFromAsset(getAssets(), "fonts/splash_title.ttf");
+        Typeface confusedFont = Typeface.createFromAsset(getAssets(), "fonts/app_name_font.otf");
         appNameTitle.setTypeface(confusedFont);
     }
 

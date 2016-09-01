@@ -4,12 +4,5 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-        <!-- specify enter and exit transitions -->
-        <item name="android:windowEnterTransition">@transition/activity_explode</item>
-        <item name="android:windowExitTransition">@transition/activity_explode</item>
-
-        <!-- specify shared element transitions -->
-        <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
-        <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
     </style>
 </resources>
