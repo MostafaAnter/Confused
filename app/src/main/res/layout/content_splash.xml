@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#fafafa"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.mostafa_anter.confused.activities.SplashActivity"
     tools:showIn="@layout/activity_splash">
 
-    <TextView
-        android:id="@+id/page_title"
-        style="?android:attr/textAppearanceLargeInverse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/app_name" />
-
-
     <ImageView
+        android:id="@+id/image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:contentDescription="@null"
-        android:scaleType="fitEnd"
-        android:src="@drawable/confused_logo" />
+        android:src="@drawable/ic_confused_logo" />
+
+    <TextView
+        android:id="@+id/text_tile"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimaryDark" />
 
 </RelativeLayout>
