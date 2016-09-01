@@ -27,4 +27,9 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void loginWithEmail(View view) {
+        startActivity(new Intent(SignInActivity.this, HomeActivity.class));
+        overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
+    }
 }

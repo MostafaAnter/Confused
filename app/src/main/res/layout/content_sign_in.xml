@@ -101,7 +101,7 @@
 
     <Button
         android:id="@+id/login_button"
-        android:onClick="login_with_email"
+        android:onClick="loginWithEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/social_network"
