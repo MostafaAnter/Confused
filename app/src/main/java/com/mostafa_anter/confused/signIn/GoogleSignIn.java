@@ -11,11 +11,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.mostafa_anter.confused.R;
 import com.mostafa_anter.confused.dialog.SweetDialogHelper;
@@ -25,7 +28,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 /**
  * Created by mostafa_anter on 9/2/16.
  */
-public class GoogleSignIn implements
+public abstract class GoogleSignIn implements
         GoogleApiClient.OnConnectionFailedListener {
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleSignIn";
@@ -34,12 +37,14 @@ public class GoogleSignIn implements
     private GoogleApiClient mGoogleApiClient;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     public GoogleSignIn(FragmentActivity context, GoogleApiClient mGoogleApiClient) {
         this.mContext = mContext;
         this.mGoogleApiClient = mGoogleApiClient;
         mAuth = FirebaseAuth.getInstance();
         configureGoogleSignIn();
+        authStateListener();
     }
 
     private void configureGoogleSignIn() {
@@ -54,16 +59,6 @@ public class GoogleSignIn implements
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-    }
-
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    public void signIn() {
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        mContext.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     public void manpulateResultReturnedFromIntent(int requestCode, Intent data) {
@@ -84,6 +79,7 @@ public class GoogleSignIn implements
             }
         }
     }
+
     public void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
@@ -109,6 +105,59 @@ public class GoogleSignIn implements
                         // [START_EXCLUDE]
                         sweetDialogHelper.dismissDialog();
                         // [END_EXCLUDE]
+                    }
+                });
+    }
+
+    private void authStateListener() {
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    onUserAuthenticatedWithGoogle(user);
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+                // [START_EXCLUDE]
+
+                // [END_EXCLUDE]
+            }
+        };
+    }
+
+    private void linkFireBaseAuthWithListener() {
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    private void removeListener() {
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+    public abstract void onUserAuthenticatedWithGoogle(FirebaseUser user);
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Log.d(TAG, "onConnectionFailed:" + connectionResult);
+    }
+
+    public void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        mContext.startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void signOut() {
+        // Google sign out
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(@NonNull Status status) {
+
                     }
                 });
     }
