@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "347561914571",
+    "firebase_url": "https://confused-173de.firebaseio.com",
+    "project_id": "confused-173de",
+    "storage_bucket": "confused-173de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347561914571:android:73b1358117aff8e2",
+        "android_client_info": {
+          "package_name": "com.mostafa_anter.confused"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347561914571-bhl5cdsr6jepn4ncgla7vajri3v72og0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mostafa_anter.confused",
+            "certificate_hash": "7A487CD8F1334A92F9EB6753C1495511AF688BCB"
+          }
+        },
+        {
+          "client_id": "347561914571-d7v92kaoch7h9o4k2bgt3ptrudv17tnb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mostafa_anter.confused",
+            "certificate_hash": "59B9DE2FF6D44262E7EB95B85D7DF49ABD1DEE0D"
+          }
+        },
+        {
+          "client_id": "347561914571-sdlsnqp84r0jskbui5s2lqgsj3umaqc2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUhhjw7WpYU_VWe_bxSYW590mjLqDwBAg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347561914571-sdlsnqp84r0jskbui5s2lqgsj3umaqc2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
