@@ -39,7 +39,7 @@ public abstract class GoogleSignIn implements
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    public GoogleSignIn(FragmentActivity context, GoogleApiClient mGoogleApiCl) {
+    public GoogleSignIn(FragmentActivity mContext, GoogleApiClient mGoogleApiClient) {
         this.mContext = mContext;
         this.mGoogleApiClient = mGoogleApiClient;
         mAuth = FirebaseAuth.getInstance();

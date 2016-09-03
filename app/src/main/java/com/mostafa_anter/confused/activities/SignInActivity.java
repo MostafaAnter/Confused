@@ -53,7 +53,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         // google sign in section
-        googleSignIn = new GoogleSignIn(this, mGoogleApiClient) {
+        googleSignIn = new GoogleSignIn(SignInActivity.this, mGoogleApiClient) {
             @Override
             public void onUserAuthenticatedWithGoogle(final FirebaseUser user) {
                 createUserInFireBaseHelper(user);
