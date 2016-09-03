@@ -106,10 +106,6 @@ public class SignInActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
     }
 
-    public void loginWithGoogle(View view) {
-        googleSignIn.signIn();
-    }
-
     private void createUserInFireBaseHelper(final FirebaseUser user) {
 
         /**
@@ -184,5 +180,18 @@ public class SignInActivity extends AppCompatActivity {
                     }
                 })
                 .show();
+    }
+
+    public void loginWithFacebook(View view) {
+    }
+
+    public void loginWithGoogle(View view) {
+        googleSignIn.signIn();
+    }
+
+    public void loginWithTwitter(View view) {
+    }
+
+    public void retrievePassword(View view) {
     }
 }
