@@ -80,7 +80,7 @@
             android:src="@drawable/facebook_logo" />
 
         <ImageButton
-            android:onClick="login_with_google"
+            android:onClick="loginWithGoogle"
             style="@android:style/Widget.Holo.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

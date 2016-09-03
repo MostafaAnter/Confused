@@ -39,7 +39,7 @@ public abstract class GoogleSignIn implements
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    public GoogleSignIn(FragmentActivity context, GoogleApiClient mGoogleApiClient) {
+    public GoogleSignIn(FragmentActivity context, GoogleApiClient mGoogleApiCl) {
         this.mContext = mContext;
         this.mGoogleApiClient = mGoogleApiClient;
         mAuth = FirebaseAuth.getInstance();
@@ -68,7 +68,7 @@ public abstract class GoogleSignIn implements
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-                firebaseAuthWithGoogle(account);
+                fireBaseAuthWithGoogle(account);
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
@@ -80,7 +80,7 @@ public abstract class GoogleSignIn implements
         }
     }
 
-    public void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void fireBaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
         SweetAlertDialog pDialog = null;
@@ -129,11 +129,11 @@ public abstract class GoogleSignIn implements
         };
     }
 
-    private void linkFireBaseAuthWithListener() {
+    public void linkFireBaseAuthWithListener() {
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-    private void removeListener() {
+    public void removeAuthListener() {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
