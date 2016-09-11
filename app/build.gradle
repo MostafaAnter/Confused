@@ -56,5 +56,7 @@ dependencies {
     compile 'me.iwf.photopicker:PhotoPicker:0.8.10@aar'
     // nine old android
     compile 'com.nineoldandroids:library:2.4.0'
+    // circle image view
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }
 apply plugin: 'com.google.gms.google-services'
