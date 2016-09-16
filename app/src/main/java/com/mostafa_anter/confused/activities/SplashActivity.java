@@ -9,6 +9,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mostafa_anter.confused.R;
 
 import butterknife.BindView;
@@ -34,9 +36,18 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                startActivity(new Intent(SplashActivity.this, SignInActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    startActivity(new Intent(SplashActivity.this, HomeActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
+                } else {
+                    // No user is signed in
+                    startActivity(new Intent(SplashActivity.this, SignInActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
+                }
             }
 
             @Override

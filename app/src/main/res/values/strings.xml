@@ -11,4 +11,6 @@
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="get_started">GET STARTED</string>
+    <string name="settings">Settings</string>
+    <string name="help_feedback"><![CDATA[Help & feedBack]]></string>
 </resources>
