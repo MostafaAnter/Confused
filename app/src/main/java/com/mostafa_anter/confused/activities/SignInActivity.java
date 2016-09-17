@@ -1,9 +1,6 @@
 package com.mostafa_anter.confused.activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -11,9 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,8 +21,6 @@ import com.mostafa_anter.confused.localStores.ConfusedPrefStore;
 import com.mostafa_anter.confused.signIn.GoogleSignIn;
 import com.mostafa_anter.confused.utils.Constants;
 import com.mostafa_anter.confused.utils.HelperUtil;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = "SignInActivity";
@@ -57,26 +49,6 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onUserAuthenticatedWithGoogle(final FirebaseUser user) {
                 createUserInFireBaseHelper(user);
-                // the Google user is now authenticated with your Firebase app
-                // begin load user avatar
-                String avatarURl;
-                if (user.getPhotoUrl() == null){
-                    avatarURl = Constants.DEFAULT_AVATAR_URL;
-                }else {
-                    avatarURl = user.getPhotoUrl().toString();
-                }
-                Glide.with(SignInActivity.this)
-                        .load(avatarURl)
-                        .asBitmap()
-                        .into(new SimpleTarget<Bitmap>(100, 100) {
-                            @Override
-                            public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
-                                // Do something with bitmap here.
-                                Drawable mDrawable = new BitmapDrawable(getBaseContext().getResources(), bitmap);
-                                showWelcomeMessage(user, mDrawable);
-                            }
-                        });
-
             }
         };
 
@@ -154,6 +126,12 @@ public class SignInActivity extends AppCompatActivity {
                             null, null, avatarURl);
                     userLocation.setValue(newUser);
                 }
+
+                // go to home page
+                startActivity(new Intent(SignInActivity.this, HomeActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
+                finish();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -161,25 +139,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void showWelcomeMessage(FirebaseUser user, Drawable drawable) {
-        new SweetAlertDialog(SignInActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
-                .setTitleText("Welcome :)")
-                .setContentText(user.getDisplayName())
-                .setCustomImage(drawable)
-                .setConfirmText("Join now")
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.dismissWithAnimation();
-                        startActivity(new Intent(SignInActivity.this, HomeActivity.class)
-                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-                        overridePendingTransition(R.anim.push_up_enter, R.anim.push_up_exit);
-                        finish();
-                    }
-                })
-                .show();
     }
 
     public void loginWithFacebook(View view) {
