@@ -23,13 +23,12 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.mostafa_anter.confused.R;
 import com.mostafa_anter.confused.dialog.SweetDialogHelper;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 /**
  * Created by mostafa_anter on 9/2/16.
  */
 public abstract class GoogleSignIn implements
         GoogleApiClient.OnConnectionFailedListener {
+
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleSignIn";
 
@@ -60,7 +59,7 @@ public abstract class GoogleSignIn implements
 
     }
 
-    public void manpulateResultReturnedFromIntent(int requestCode, Intent data) {
+    public void manipulateResultReturnedFromIntent(int requestCode, Intent data) {
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);

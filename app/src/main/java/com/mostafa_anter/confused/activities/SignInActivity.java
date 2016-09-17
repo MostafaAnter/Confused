@@ -68,7 +68,8 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        googleSignIn.manpulateResultReturnedFromIntent(requestCode, data);
+        // manage login with google
+        googleSignIn.manipulateResultReturnedFromIntent(requestCode, data);
     }
 
     public void loginWithEmail(View view) {
