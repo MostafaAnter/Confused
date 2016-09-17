@@ -13,8 +13,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.mostafa_anter.confused.R;
+import com.mostafa_anter.confused.dialog.SweetDialogHelper;
 import com.mostafa_anter.confused.utils.HelperUtil;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,8 +54,12 @@ public class HomeActivity extends AppCompatActivity
         super.onStart();
         // check if online or not
         if (!HelperUtil.isOnline(this)){
+            new SweetDialogHelper(this).showErrorMessage("opps", "you are offline");
 
         }
+
+        FirebaseAuth.getInstance().signOut();
+
     }
 
     @Override

@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +24,6 @@ import com.mostafa_anter.confused.utils.HelperUtil;
 public class SignInActivity extends AppCompatActivity {
     private static final String TAG = "SignInActivity";
 
-    private GoogleApiClient mGoogleApiClient;
     private GoogleSignIn googleSignIn;
 
     @Override
@@ -45,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
         });
 
         // google sign in section
-        googleSignIn = new GoogleSignIn(SignInActivity.this, mGoogleApiClient) {
+        googleSignIn = new GoogleSignIn(SignInActivity.this) {
             @Override
             public void onUserAuthenticatedWithGoogle(final FirebaseUser user) {
                 createUserInFireBaseHelper(user);

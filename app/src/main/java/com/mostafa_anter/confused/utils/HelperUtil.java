@@ -33,17 +33,6 @@ public class HelperUtil {
         return userEmail.replace(".", ",");
     }
 
-    /**
-     *
-     * @param context activity of fragment
-     * @param viewId view that hold snake bar
-     * @param message message that you want to show
-     */
-    public static void showSnakeBar(FragmentActivity context, int viewId, String message){
-        View view = context.findViewById(viewId);
-        Snackbar.make(view, message, Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
-    }
 
 
 }

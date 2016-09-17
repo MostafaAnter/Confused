@@ -39,9 +39,8 @@ public abstract class GoogleSignIn implements
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    public GoogleSignIn(FragmentActivity mContext, GoogleApiClient mGoogleApiClient) {
+    public GoogleSignIn(FragmentActivity mContext) {
         this.mContext = mContext;
-        this.mGoogleApiClient = mGoogleApiClient;
         mAuth = FirebaseAuth.getInstance();
         configureGoogleSignIn();
         authStateListener();
@@ -72,8 +71,7 @@ public abstract class GoogleSignIn implements
             } else {
                 // Google Sign In failed, update UI appropriately
                 // [START_EXCLUDE]
-                SweetAlertDialog pDialog = null;
-                new SweetDialogHelper(mContext, pDialog)
+                new SweetDialogHelper(mContext)
                         .showErrorMessage("oops!", "Google Sign In failed, try again");
                 // [END_EXCLUDE]
             }
@@ -81,10 +79,9 @@ public abstract class GoogleSignIn implements
     }
 
     private void fireBaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
+        Log.d(TAG, "fireBaseAuthWithGoogle:" + acct.getId());
         // [START_EXCLUDE silent]
-        SweetAlertDialog pDialog = null;
-        final SweetDialogHelper sweetDialogHelper = new SweetDialogHelper(mContext, pDialog);
+        final SweetDialogHelper sweetDialogHelper = new SweetDialogHelper(mContext);
         sweetDialogHelper.showMaterialProgress("loading...");
         // [END_EXCLUDE]
 

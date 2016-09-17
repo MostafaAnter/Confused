@@ -12,9 +12,8 @@ public class SweetDialogHelper {
     private FragmentActivity mContext;
     private SweetAlertDialog pDialog;
 
-    public SweetDialogHelper(FragmentActivity mContext, SweetAlertDialog pDialog) {
+    public SweetDialogHelper(FragmentActivity mContext) {
         this.mContext = mContext;
-        this.pDialog = pDialog;
     }
 
     public void showMaterialProgress(String message) {
