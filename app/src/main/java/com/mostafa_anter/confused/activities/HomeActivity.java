@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity
 
         }
 
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
 
     }
 
