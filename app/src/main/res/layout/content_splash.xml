@@ -19,13 +19,13 @@
 
     <TextView
         android:id="@+id/text_tile"
-        style="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:text="@string/app_name"
+        android:textSize="30sp"
         android:textColor="@color/colorAccent" />
 
 </RelativeLayout>
