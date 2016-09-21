@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -12,22 +13,25 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView"
+        android:id="@+id/userAvatar"
         android:contentDescription="@null"
         android:layout_width="?android:listPreferredItemHeightLarge"
         android:layout_height="?android:listPreferredItemHeightLarge"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/colorAccent"
         android:src="@drawable/ic_confused_logo" />
 
     <TextView
+        android:id="@+id/userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Confused"
+        android:text="@string/app_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/userID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="" />
