@@ -46,6 +46,8 @@ dependencies {
     // fireBase & google authentication
     compile 'com.google.firebase:firebase-auth:9.6.1'
     compile 'com.google.android.gms:play-services-auth:9.6.1'
+    // facebook sdk for login
+    compile 'com.facebook.android:facebook-android-sdk:[4,5)'
     // fireBase database
     compile 'com.google.firebase:firebase-database:9.6.1'
     // sweet dialog
