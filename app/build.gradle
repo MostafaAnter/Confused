@@ -43,7 +43,7 @@ dependencies {
     // for butter knife
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
-    // fireBase authentication
+    // fireBase & google authentication
     compile 'com.google.firebase:firebase-auth:9.6.1'
     compile 'com.google.android.gms:play-services-auth:9.6.1'
     // fireBase database
