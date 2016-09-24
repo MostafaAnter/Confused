@@ -19,7 +19,7 @@
         android:layout_height="?android:listPreferredItemHeightLarge"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         app:civ_border_width="1dp"
-        app:civ_border_color="@color/colorAccent"
+        app:civ_border_color="@color/icons"
         android:src="@drawable/ic_confused_logo" />
 
     <TextView
