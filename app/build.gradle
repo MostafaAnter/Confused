@@ -29,6 +29,9 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    buildTypes.each {
+        it.resValue 'string', 'facebook_app_id', '"1755937528022430"'
+    }
 }
 
 repositories {
